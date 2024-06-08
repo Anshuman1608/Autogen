@@ -1,4 +1,5 @@
 Created db from squirell and then ran these commands
+DROP SCHEMA IF EXISTS ea CASCADE;
 create schema ea
 CREATE TABLE ea.user (
     id SERIAL unique,
@@ -10,6 +11,8 @@ CREATE TABLE ea.user (
     name VARCHAR(100),
     last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+DROP USER IF EXISTS eauser;
 
 CREATE USER eauser WITH SUPERUSER PASSWORD 'eauser';
 

@@ -4,6 +4,7 @@ import requests
 from services.userservice import Service
 
 router = APIRouter()
+service_instance = Service()
 
 class Register(BaseModel):
     name: str
@@ -20,5 +21,9 @@ async def register_user(register:Register):
     name = register.name
     email = register.email
     password = register.password
-    service_instance = Service(name, email, password) 
     return service_instance.register_user(name, email, password)
+
+@router.get("/getallusers")
+async def get_all_users():
+    return service_instance.get_all_users()
+
